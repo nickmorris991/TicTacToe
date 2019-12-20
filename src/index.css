@@ -15,21 +15,23 @@ ol, ul {
 
 .status {
   margin-bottom: 10px;
+  font-size: 40px;
 }
 
 .square {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;
+  font-size: 100px;
+  color: rgb(103, 226, 109);
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 200px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 200px;
 }
 
 .square:focus {

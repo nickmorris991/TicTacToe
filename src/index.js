@@ -42,6 +42,17 @@ class Board extends React.Component {
 
   render() {
     const winner = calculateWinner(this.state.squares);
+
+    const ColoredLine = ({ color }) => (
+      <hr
+        style = {{
+          color: color,
+          backgroundColor: color,
+          height: 5
+        }}
+      />
+    );
+
     let status;
     if (winner) {
       status = 'Winner: ' + winner;
@@ -52,11 +63,15 @@ class Board extends React.Component {
     return (
       <div>
         <div className="status">{status}</div>
+
+        <ColoredLine color="rgb(103, 226, 109)"/>        
+        
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
         </div>
+        
         <div className="board-row">
           {this.renderSquare(3)}
           {this.renderSquare(4)}
