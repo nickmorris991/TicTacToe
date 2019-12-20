@@ -1,6 +1,10 @@
+// basic imports
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
+// additional styling libraries
+import {Line} from 'react-lineto';
 
 function Square(props) {
   return (
@@ -82,6 +86,16 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
+
+        <div>
+          <Line 
+            borderStyle = "dotted" 
+            borderColor = "black" 
+            borderWidth = {8} 
+            x0 = {55} y0={125} 
+            x1={580} y1={650}/>
+        </div>
+
       </div>
     );
   }
