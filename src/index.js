@@ -88,6 +88,7 @@ class Board extends React.Component {
         </div>
 
         {/* pass down winning cordinates to display */}
+        {/* goal: visualization / animation practice */}
         <div>
           <Line 
             borderStyle = "dotted" 
