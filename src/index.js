@@ -48,6 +48,7 @@ class Board extends React.Component {
     const winner = calculateWinner(this.state.squares);
     const draw = calculateDraw(this.state.squares);
 
+    // line specifications
     const ColoredLine = ({ color }) => (
       <hr
         style = {{
@@ -58,15 +59,18 @@ class Board extends React.Component {
       />
     );
 
+    // determine status
     let status;
     if (winner) {
       status = 'Winner: ' + winner;
+      console.log(winner);
     } else if (draw) {
       status = 'Draw! Refresh to Play Again'
     } else {
       status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
+    // return board element
     return (
       <div>
         <div className="status">{status}</div>
@@ -97,7 +101,6 @@ class Board extends React.Component {
             x0 = {65} y0={125} 
             x1={590} y1={650}/>
         </div>
-
       </div>
     );
   }
@@ -149,7 +152,10 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     let [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return { 
+        square: squares[a],
+        position: lines[i]
+      }; 
     } 
   }
   return null;
