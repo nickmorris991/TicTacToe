@@ -51,7 +51,7 @@ class Board extends React.Component {
     // line specifications
     const ColoredLine = ({ color }) => (
       <hr
-        style = {{
+        style = {{ 
           color: color,
           backgroundColor: color,
           height: 5
