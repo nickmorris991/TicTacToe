@@ -61,9 +61,10 @@ class Board extends React.Component {
 
     // determine status
     let status;
+    let linePos;
     if (winner) {
       status = 'Winner: ' + winner;
-      console.log(winner);
+      linePos = calculateLinePos(winner.position);
     } else if (draw) {
       status = 'Draw! Refresh to Play Again'
     } else {
@@ -135,6 +136,13 @@ function calculateDraw(squares) {
   } else {
     return true;
   }
+}
+
+function calculateLinePos(pos) {
+  let x0, y0, x1, y1;
+  let [a, b, c] = pos;
+  
+  
 }
 
 function calculateWinner(squares) {
