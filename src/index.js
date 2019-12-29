@@ -72,6 +72,37 @@ class Board extends React.Component {
     }
 
     // return board element
+    if (winner) {
+      return (
+        <div>
+          <div className="status">{status}</div>
+          <ColoredLine color="rgb(103, 226, 109)"/>        
+          <div className="board-row">
+            {this.renderSquare(0)}
+            {this.renderSquare(1)}
+            {this.renderSquare(2)}
+          </div>
+          <div className="board-row">
+            {this.renderSquare(3)}
+            {this.renderSquare(4)}
+            {this.renderSquare(5)}
+          </div>
+          <div className="board-row">
+            {this.renderSquare(6)}
+            {this.renderSquare(7)}
+            {this.renderSquare(8)}
+          </div>
+          <div>
+            <Line 
+              borderStyle = "dotted" 
+              borderColor = "black" 
+              borderWidth = {8} 
+              x0 = {linePos.x0} y0={linePos.y0} 
+              x1={linePos.x1} y1={linePos.y1}/>
+          </div>
+        </div>
+      );
+    } 
     return (
       <div>
         <div className="status">{status}</div>
@@ -91,19 +122,8 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-
-        {/* pass down winning cordinates to display */}
-        {/* goal: visualization / animation practice */}
-        <div>
-          <Line 
-            borderStyle = "dotted" 
-            borderColor = "black" 
-            borderWidth = {8} 
-            x0 = {65} y0={125} 
-            x1={590} y1={650}/>
-        </div>
       </div>
-    );
+    ); 
   }
 }
 
@@ -139,10 +159,17 @@ function calculateDraw(squares) {
 }
 
 function calculateLinePos(pos) {
-  let x0, y0, x1, y1;
-  let [a, b, c] = pos;
-  
-  
+  let lineCoordinates = {}
+  //lineCoordinates[[0, 1, 2]]
+  // lineCoordinates[[3, 4, 5]]
+  // lineCoordinates[[6, 7, 8]]
+  // lineCoordinates[[0, 3, 6]]
+  // lineCoordinates[[1, 4, 7]]
+  // lineCoordinates[[2, 5, 8]]
+  lineCoordinates[[0, 4, 8]] = {x0: 65, y0: 125, x1: 590, y1: 650};
+  // lineCoordinates[[2, 4, 6]]
+
+  return lineCoordinates[pos];
 }
 
 function calculateWinner(squares) {
