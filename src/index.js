@@ -63,7 +63,7 @@ class Board extends React.Component {
     let status;
     let linePos;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = 'Winner: ' + winner.square;
       linePos = calculateLinePos(winner.position);
     } else if (draw) {
       status = 'Draw! Refresh to Play Again'
@@ -160,7 +160,7 @@ function calculateDraw(squares) {
 
 function calculateLinePos(pos) {
   let lineCoordinates = {}
-  //lineCoordinates[[0, 1, 2]]
+  lineCoordinates[[0, 1, 2]] = {x0: 65, y0: 190, x1: 590, y1: 190};
   // lineCoordinates[[3, 4, 5]]
   // lineCoordinates[[6, 7, 8]]
   // lineCoordinates[[0, 3, 6]]
