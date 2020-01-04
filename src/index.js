@@ -161,9 +161,9 @@ function calculateDraw(squares) {
 function calculateLinePos(pos) {
   let lineCoordinates = {}
   lineCoordinates[[0, 1, 2]] = {x0: 65, y0: 190, x1: 590, y1: 190};
-  // lineCoordinates[[3, 4, 5]]
-  // lineCoordinates[[6, 7, 8]]
-  // lineCoordinates[[0, 3, 6]]
+  lineCoordinates[[3, 4, 5]] = {x0: 65, y0: 390, x1: 590, y1: 390};
+  lineCoordinates[[6, 7, 8]] = {x0: 65, y0: 590, x1: 590, y1: 590};
+  lineCoordinates[[0, 3, 6]] = {x0: 135, y0: 130, x1: 135, y1: 650};
   // lineCoordinates[[1, 4, 7]]
   // lineCoordinates[[2, 5, 8]]
   lineCoordinates[[0, 4, 8]] = {x0: 65, y0: 125, x1: 590, y1: 650};
