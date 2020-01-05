@@ -163,11 +163,11 @@ function calculateLinePos(pos) {
   lineCoordinates[[0, 1, 2]] = {x0: 65, y0: 190, x1: 590, y1: 190};
   lineCoordinates[[3, 4, 5]] = {x0: 65, y0: 390, x1: 590, y1: 390};
   lineCoordinates[[6, 7, 8]] = {x0: 65, y0: 590, x1: 590, y1: 590};
-  lineCoordinates[[0, 3, 6]] = {x0: 135, y0: 130, x1: 135, y1: 650};
-  // lineCoordinates[[1, 4, 7]]
-  // lineCoordinates[[2, 5, 8]]
+  lineCoordinates[[0, 3, 6]] = {x0: 135, y0: 130, x1: 135, y1: 630};
+  lineCoordinates[[1, 4, 7]] = {x0: 335, y0: 130, x1: 335, y1: 650};
+  lineCoordinates[[2, 5, 8]] = {x0: 535, y0: 130, x1: 535, y1: 650};
   lineCoordinates[[0, 4, 8]] = {x0: 65, y0: 125, x1: 590, y1: 650};
-  // lineCoordinates[[2, 4, 6]]
+  lineCoordinates[[2, 4, 6]] = {x0: 580, y0: 130, x1: 110, y1: 630};
 
   return lineCoordinates[pos];
 }
