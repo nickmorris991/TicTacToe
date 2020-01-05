@@ -1,9 +1,6 @@
-// basic imports
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-// additional styling libraries
 import {Line} from 'react-lineto';
 
 function Square(props) {
@@ -150,6 +147,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+/* ***** Functions ***** */
+
 function calculateDraw(squares) {
   if (squares.indexOf(null) > -1) {
     return false;
@@ -168,7 +167,6 @@ function calculateLinePos(pos) {
   lineCoordinates[[2, 5, 8]] = {x0: 535, y0: 130, x1: 535, y1: 650};
   lineCoordinates[[0, 4, 8]] = {x0: 65, y0: 125, x1: 590, y1: 650};
   lineCoordinates[[2, 4, 6]] = {x0: 580, y0: 130, x1: 110, y1: 630};
-
   return lineCoordinates[pos];
 }
 
