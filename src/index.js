@@ -68,7 +68,7 @@ class Board extends React.Component {
       status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
-    // return board element
+    // return board element (conditionally)
     if (winner) {
       return (
         <div>
@@ -147,7 +147,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-/* ***** Functions ***** */
+/* ***** Helper Functions ***** */
 
 function calculateDraw(squares) {
   if (squares.indexOf(null) > -1) {
