@@ -119,7 +119,7 @@ class Game extends React.Component {
     const history = this.state.history;
     const current = history[history.length - 1];
     const winner = calculateWinner(current.squares);
-    const draw = calculateDraw(this.state.squares);
+    const draw = calculateDraw(current.squares);
 
     // determine status
     let status;
