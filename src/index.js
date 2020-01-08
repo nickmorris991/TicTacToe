@@ -12,39 +12,16 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true,
-    };
-  }
-
-  handleClick(i) {
-    const squares = this.state.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext,
-    });
-  }
-
   renderSquare(i) {
     return (
       <Square 
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
       />
     );
   }
 
   render() {
-    const winner = calculateWinner(this.state.squares);
-    const draw = calculateDraw(this.state.squares);
-
     // line specifications
     const ColoredLine = ({ color }) => (
       <hr
@@ -56,23 +33,10 @@ class Board extends React.Component {
       />
     );
 
-    // determine status
-    let status;
-    let linePos;
-    if (winner) {
-      status = 'Winner: ' + winner.square;
-      linePos = calculateLinePos(winner.position);
-    } else if (draw) {
-      status = 'Draw! Refresh to Play Again'
-    } else {
-      status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
-    }
-
     // return board element (conditionally)
-    if (winner) {
+    if (this.props.winner) {
       return (
         <div>
-          <div className="status">{status}</div>
           <ColoredLine color="rgb(103, 226, 109)"/>        
           <div className="board-row">
             {this.renderSquare(0)}
@@ -94,15 +58,14 @@ class Board extends React.Component {
               borderStyle = "dotted" 
               borderColor = "black" 
               borderWidth = {8} 
-              x0 = {linePos.x0} y0={linePos.y0} 
-              x1={linePos.x1} y1={linePos.y1}/>
+              x0 = {this.props.linePos.x0} y0={this.props.linePos.y0} 
+              x1={this.props.linePos.x1} y1={this.props.linePos.y1}/>
           </div>
         </div>
       );
     } 
     return (
       <div>
-        <div className="status">{status}</div>
         <ColoredLine color="rgb(103, 226, 109)"/>        
         <div className="board-row">
           {this.renderSquare(0)}
@@ -125,18 +88,68 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true,
+    };
+  }
+
+  handleClick(i) {
+    const history = this.state.history;
+    const current = history[history.length -1];
+    const squares = current.squares.slice();
+    
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      history: history.concat([{
+        squares: squares,
+      }]),
+      xIsNext: !this.state.xIsNext,
+    });
+  }
+
   render() {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const winner = calculateWinner(current.squares);
+    const draw = calculateDraw(this.state.squares);
+
+    // determine status
+    let status;
+    let linePos;
+    if (winner) {
+      status = 'Winner: ' + winner.square;
+      linePos = calculateLinePos(winner.position);
+    } else if (draw) {
+      status = 'Draw! Refresh to Play Again'
+    } else {
+      status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
+  
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board 
+            squares={current.squares}
+            onClick={(i) => this.handleClick(i)}
+            linePos={linePos}
+            winner={winner}
+          />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
+          <div>{status}</div>
           <ol>{/* TODO */}</ol>
         </div>
       </div>
     );
+
   }
 }
 
