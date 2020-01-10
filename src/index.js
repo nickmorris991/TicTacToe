@@ -37,6 +37,9 @@ class Board extends React.Component {
     if (this.props.winner) {
       return (
         <div>
+          <div className="game-info">
+            {this.props.status}
+          </div>
           <ColoredLine color="rgb(103, 226, 109)"/>        
           <div className="board-row">
             {this.renderSquare(0)}
@@ -66,6 +69,9 @@ class Board extends React.Component {
     } 
     return (
       <div>
+        <div className="game-info">
+          {this.props.status}
+        </div>
         <ColoredLine color="rgb(103, 226, 109)"/>        
         <div className="board-row">
           {this.renderSquare(0)}
@@ -141,11 +147,8 @@ class Game extends React.Component {
             onClick={(i) => this.handleClick(i)}
             linePos={linePos}
             winner={winner}
+            status={status}
           />
-        </div>
-        <div className="game-info">
-          <div>{status}</div>
-          <ol>{/* TODO */}</ol>
         </div>
       </div>
     );
