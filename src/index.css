@@ -56,3 +56,10 @@ ol, ul {
   text-align: center;
   font-size: 45px;
 }
+
+.time-travel {
+  margin-left: 50px;
+  margin-right: 100px;
+  margin-top: 100px;
+  align-items: center;
+}

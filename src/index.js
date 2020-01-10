@@ -71,7 +71,7 @@ class Board extends React.Component {
     return (
       <div>
         <div className="game-info">
-          {this.props.status}
+          <div>{this.props.status}</div>
         </div> 
         <ColoredLine color="rgb(103, 226, 109)"/>    
         <div className="board-row">
@@ -128,6 +128,18 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
     const draw = calculateDraw(current.squares);
 
+    // map over the history in the Game's render method
+    const moves = history.map((ste, move) => {
+      const desc = move ?
+        'Go to move #' + move :
+        'go to game start';
+      return (
+        <li>
+          <button onClick={() => this.jumpto(move)}>{desc}</button>
+        </li>
+      )
+    });
+
     // determine status
     let status;
     let linePos;
@@ -143,6 +155,9 @@ class Game extends React.Component {
     return (
       <div> 
         <div className="game"> 
+          <div className="time-travel">
+            <div>{moves}</div>
+          </div>
           <div className="game-board"> 
             <Board 
               squares={current.squares}
@@ -150,6 +165,7 @@ class Game extends React.Component {
               linePos={linePos}
               winner={winner}
               status={status}
+              moves={moves}
             />
           </div>
         </div>
