@@ -22,6 +22,7 @@ class Board extends React.Component {
   }
 
   render() {
+
     // line specifications
     const ColoredLine = ({ color }) => (
       <hr
@@ -39,8 +40,8 @@ class Board extends React.Component {
         <div>
           <div className="game-info">
             {this.props.status}
-          </div>
-          <ColoredLine color="rgb(103, 226, 109)"/>        
+          </div>  
+          <ColoredLine color="rgb(103, 226, 109)"/>      
           <div className="board-row">
             {this.renderSquare(0)}
             {this.renderSquare(1)}
@@ -71,8 +72,8 @@ class Board extends React.Component {
       <div>
         <div className="game-info">
           {this.props.status}
-        </div>
-        <ColoredLine color="rgb(103, 226, 109)"/>        
+        </div> 
+        <ColoredLine color="rgb(103, 226, 109)"/>    
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -140,15 +141,17 @@ class Game extends React.Component {
     }
   
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board 
-            squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
-            linePos={linePos}
-            winner={winner}
-            status={status}
-          />
+      <div> 
+        <div className="game"> 
+          <div className="game-board"> 
+            <Board 
+              squares={current.squares}
+              onClick={(i) => this.handleClick(i)}
+              linePos={linePos}
+              winner={winner}
+              status={status}
+            />
+          </div>
         </div>
       </div>
     );
