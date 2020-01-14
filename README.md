@@ -1,8 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Note: 
  
 This project is a continuation of what can be found on many React Tutorials and is meant to be a small project for me to play around with basic React concepts.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
