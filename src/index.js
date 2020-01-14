@@ -164,9 +164,6 @@ class Game extends React.Component {
     return (
       <div> 
         <div className="game"> 
-          <div className="time-travel">
-            <div>{moves}</div>
-          </div>
           <div className="game-board"> 
             <Board 
               squares={current.squares}
@@ -176,6 +173,9 @@ class Game extends React.Component {
               status={status}
               moves={moves}
             />
+          </div>
+          <div className="time-travel">
+            <div>{moves}</div>
           </div>
         </div>
       </div>
