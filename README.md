@@ -73,5 +73,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ### To do list: 
 - fix hardcoded values for winning line
+- fix time travel feature bug
 - add slow reveal animation to winning line
-- add time travel buttons / feature
